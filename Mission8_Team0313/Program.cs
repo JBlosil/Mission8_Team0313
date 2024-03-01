@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Mission8_Team0313.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<TimeManagementContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:ManagementConnection"])
+});
 
 var app = builder.Build();
 
