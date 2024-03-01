@@ -8,6 +8,13 @@ namespace Mission8_Team0313.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        private TimeManagementContext context;
+
+        public HomeController(TimeManagementContext temp)
+        {
+            context = temp
+        }
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
