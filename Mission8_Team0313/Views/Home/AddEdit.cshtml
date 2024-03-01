@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Add a Task";
+}
+
+@model Tasks
+
+<div class="justify-content-center">
+    <form method="post">
+
+            <input type="hidden" asp-for="TaskID" />
+            <br />
+            <br />
+            <label asp-for="Task" style="font-weight:700">Task</label>
+            <br />
+            <input asp-for="Task" placeholder="Enter a task here"/>
+            <br />
+            <br />
+        <label asp-for="DueDate" style="font-weight:700">Due Date:</label>
+            <br />
+            <input type="date" asp-for="DueDate" />
+            <br />
+            <br />
+        <label asp-for="Quadrant" style="font-weight:700">Quadrant:</label>
+            <br />
+            <select asp-for="Quadrant">
+                <option value="" selected disabled hidden >Select a Quadrant</option>
+                <option value="1">Important and Urgent</option>
+                <option value="2">Important and Not Urgent</option>
+                <option value="3">Not Important and Urgent</option>
+                <option value="4">Not Important and Not Urgent</option>
+            </select>
+            <br />
+            <br />
+        <label asp-for="Category" style="font-weight:700">Category:</label>
+            <br />
+            <select asp-for="Category">
+                <option value="" selected disabled hidden >Select a Category</option>
+                <option value="1">Home</option>
+                <option value="2">School</option>
+                <option value="3">Work</option>
+                <option value="4">Church</option>
+            </select>
+            <br />
+            <br />
+            <label asp-for="Completed" style="font-weight:700">Completed:</label>
+            <select asp-for="Completed">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br />
+            <br />
+            <button class="btn btn-success"type="submit" style="align-content:center">Submit</button>
+    </form>
+</div>
