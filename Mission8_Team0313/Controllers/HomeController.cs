@@ -8,11 +8,11 @@ namespace Mission8_Team0313.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private TimeManagementContext context;
+        private IManagementRepository _repo;
 
-        public HomeController(TimeManagementContext temp)
+        public HomeController(IManagementRepository temp)
         {
-            context = temp
+            _repo = temp;
         }
 
         public HomeController(ILogger<HomeController> logger)

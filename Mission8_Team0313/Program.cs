@@ -11,6 +11,8 @@ builder.Services.AddDbContext<TimeManagementContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:ManagementConnection"])
 });
 
+builder.Services.AddScoped<IManagementRepository, EFManagementRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
