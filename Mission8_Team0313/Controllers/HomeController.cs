@@ -41,7 +41,7 @@ namespace Mission8_Team0313.Controllers
 
         public IActionResult Quadrants()
         {
-            var tasks = _repo.Actions.Include("Category")
+            var tasks = _repo.Actions.Where(x => x.Completed == 0).Include("Category")
                  .OrderBy(x => x.TaskID).ToList();
 
             return View(tasks);
