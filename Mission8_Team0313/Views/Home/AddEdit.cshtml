@@ -2,24 +2,27 @@
     ViewData["Title"] = "Add a Task";
 }
 
-@model Tasks
+@model  Mission8_Team0313.Models.Action
+
+<h1>Task Submission</h1>
 
 <div class="justify-content-center">
     <form method="post">
 
-            <input type="hidden" asp-for="TaskID" />
-            <br />
-            <br />
-            <label asp-for="Task" style="font-weight:700">Task</label>
-            <br />
-            <input asp-for="Task" placeholder="Enter a task here"/>
-            <br />
-            <br />
+        <input type="hidden" asp-for="TaskID" />
+        <br />
+        <br />
+        <label asp-for="Task" style="font-weight:700">Task</label>
+        <br />
+        <input asp-for="Task" placeholder="Enter a task here"/>
+        <span asp-validation-for="Task" class="text-danger"></span>
+        <br />
+        <br />
         <label asp-for="DueDate" style="font-weight:700">Due Date:</label>
-            <br />
-            <input type="date" asp-for="DueDate" />
-            <br />
-            <br />
+        <br />
+        <input type="date" asp-for="DueDate" />
+        <br />
+        <br />
         <label asp-for="Quadrant" style="font-weight:700">Quadrant:</label>
             <br />
             <select asp-for="Quadrant">
@@ -29,17 +32,18 @@
                 <option value="3">Not Important and Urgent</option>
                 <option value="4">Not Important and Not Urgent</option>
             </select>
+        <span asp-validation-for="Quadrant" class="text-danger"></span>
             <br />
             <br />
-        <label asp-for="Category" style="font-weight:700">Category:</label>
+        <label asp-for="CategoryId" style="font-weight:700">Category:</label>
             <br />
-            <select asp-for="Category">
-                <option value="" selected disabled hidden >Select a Category</option>
-                <option value="1">Home</option>
-                <option value="2">School</option>
-                <option value="3">Work</option>
-                <option value="4">Church</option>
-            </select>
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
             <br />
             <br />
             <label asp-for="Completed" style="font-weight:700">Completed:</label>
@@ -49,6 +53,6 @@
             </select>
             <br />
             <br />
-            <button class="btn btn-success"type="submit" style="align-content:center">Submit</button>
+            <button class="btn btn-success" type="submit" style="align-content:center">Submit</button>
     </form>
 </div>

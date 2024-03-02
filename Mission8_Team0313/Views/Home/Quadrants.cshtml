@@ -4,7 +4,7 @@
 @{
 }
 
-@model List<Task> 
+@model List<Mission8_Team0313.Models.Action>
 @*Will probably need to match this to the actual model name... hmmm...*@
 
 <table style="width:100%">
@@ -18,29 +18,35 @@
     <td>
       <ul>
           <!--Razor code below might need some fixing-->
-        @foreach (var Task in Model.Where(t => t.Quadrant == 1 ))
+        @foreach (var a in Model)
         {
-            <li>
-                @Task.Task
-                <br>
-                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+            if (a.Quadrant == 1)
+            {
+                <li>
+                    @a.Task
+                    <br/>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@a.TaskID">Edit</a>
 
-                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
-            </li>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@a.TaskID">Delete</a>
+                </li>
+            }
         }
       </ul>
     </td>
     <td>
       <ul>
-        @foreach (var Task in Model.Where(t => t.Quadrant == 2 ))
+        @foreach (var s in Model)
         {
-            <li>
-                @Task.Task
-                <br>
-                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+            if (s.Quadrant == 2)
+            {
+                <li>
+                    @s.Task
+                    <br>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@s.TaskID">Edit</a>
 
-                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
-            </li>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@s.TaskID">Delete</a>
+                </li>
+            }
         }
       </ul>
     </td>
@@ -49,29 +55,35 @@
     <td style="font-weight: bold">Not Important</td>
     <td>
       <ul>
-        @foreach (var Task in Model.Where(t => t.Quadrant == 3 ))
+        @foreach (var d in Model)
         {
-            <li>
-                @Task.Task
-                <br>
-                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+            if (d.Quadrant == 3)
+            {
+                <li>
+                    @d.Task
+                    <br>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@d.TaskID">Edit</a>
 
-                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
-            </li>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@d.TaskID">Delete</a>
+                </li>
+            }
         }
       </ul>
     </td>
     <td>
       <ul>
-        @foreach (var Task in Model.Where(t => t.Quadrant == 4 ))
+        @foreach (var f in Model)
         {
-            <li>
-                @Task.Task
-                <br>
-                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+            if (f.Quadrant == 4)
+            {
+                <li>
+                    @f.Task
+                    <br>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@f.TaskID">Edit</a>
 
-                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
-            </li>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@f.TaskID">Delete</a>
+                </li>
+            }
         }
       </ul>
     </td>

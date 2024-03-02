@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TimeManagementContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:ManagementConnection"])
+    options.UseSqlite(builder.Configuration["ConnectionStrings:ManagementConnection"]);
 });
 
 var app = builder.Build();
