@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Task> 
+@*Will probably need to match this to the actual model name... hmmm...*@
+
+<table style="width:100%">
+  <tr>
+    <th></th>
+    <th style="font-weight: bold">Urgent</th>
+    <th style="font-weight: bold">Not Urgent</th>
+  </tr>
+  <tr>
+    <td style="font-weight: bold">Important</td>
+    <td>
+      <ul>
+          <!--Razor code below might need some fixing-->
+        @foreach (var Task in Model.Where(t => t.Quadrant == 1 ))
+        {
+            <li>
+                @Task.Task
+                <br>
+                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+
+                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
+            </li>
+        }
+      </ul>
+    </td>
+    <td>
+      <ul>
+        @foreach (var Task in Model.Where(t => t.Quadrant == 2 ))
+        {
+            <li>
+                @Task.Task
+                <br>
+                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+
+                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
+            </li>
+        }
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold">Not Important</td>
+    <td>
+      <ul>
+        @foreach (var Task in Model.Where(t => t.Quadrant == 3 ))
+        {
+            <li>
+                @Task.Task
+                <br>
+                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+
+                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
+            </li>
+        }
+      </ul>
+    </td>
+    <td>
+      <ul>
+        @foreach (var Task in Model.Where(t => t.Quadrant == 4 ))
+        {
+            <li>
+                @Task.Task
+                <br>
+                <a class="btn btn-info" asp-controller="Home" asp- action="Edit" asp-route-id="@Task.TaskID">Edit</a>
+
+                <a class="btn btn-danger" asp-controller="Home" asp- action="Delete" asp-route-id="@Task.TaskID">Delete</a>
+            </li>
+        }
+      </ul>
+    </td>
+  </tr>
+</table>
