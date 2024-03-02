@@ -5,7 +5,6 @@ namespace Mission8_Team0313.Models
 {
     public class Action
     {
-        [Required]
         [Key]
         public int TaskID { get; set; }
 
@@ -17,8 +16,8 @@ namespace Mission8_Team0313.Models
         [Required(ErrorMessage = "Quadrant is required.")]
         public int Quadrant { get; set; }
 
-		[ForeignKey("CategoryId")]
-		public int? CategoryId { get; set; }
+		[ForeignKey("CategoryID")]
+		public int? CategoryID { get; set; }
 		public Category? Category { get; set; }
 
 		public int? Completed { get; set; }

@@ -14,19 +14,19 @@ namespace Mission8_Team0313.Models
 
         public DbSet<Category> Categories { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=Time_Management.sqlite");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Action>(entity =>
+/*            modelBuilder.Entity<Action>(entity =>
             {
                 entity.HasKey(e => e.TaskID);
 
                 entity.Property(e => e.TaskID).HasColumnName("TaskID");
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+                entity.Property(e => e.CategoryID).HasColumnName("CategoryID");
 
             });
 
@@ -36,7 +36,7 @@ namespace Mission8_Team0313.Models
 
                 entity.Property(e => e.CategoryID).HasColumnName("CategoryID");
                 entity.Property(e => e.CategoryName).HasColumnName("Category");
-            });
+            });*/
 
             modelBuilder.Entity<Category>().HasData(
 

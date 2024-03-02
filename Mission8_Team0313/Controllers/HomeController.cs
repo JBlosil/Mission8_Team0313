@@ -50,8 +50,6 @@ namespace Mission8_Team0313.Controllers
         [HttpGet]
         public IActionResult AddEdit()
         {
-            ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.CategoryName).ToList();
 
             return View(new Models.Action());
         }
@@ -59,10 +57,8 @@ namespace Mission8_Team0313.Controllers
         [HttpPost]
         public IActionResult AddEdit(Models.Action response)
         {
-            if (!ModelState.IsValid)
+            if (response.Quadrant == null || response.Task == null)
             {
-                ViewBag.Categories = _repo.Categories
-                .OrderBy(c => c.CategoryName).ToList();
                 // Model validation failed, return to the view with the current model to show validation messages
                 return View(response);
             }
@@ -80,8 +76,6 @@ namespace Mission8_Team0313.Controllers
             var recordEdit = _repo.Actions
                 .Single(x => x.TaskID == id);
 
-            ViewBag.Categories = _repo.Categories
-            .OrderBy(x => x.CategoryName).ToList();
 
             return View("AddEdit", recordEdit);
         }

@@ -26,7 +26,6 @@
         <label asp-for="Quadrant" style="font-weight:700">Quadrant:</label>
             <br />
             <select asp-for="Quadrant">
-                <option value="" selected disabled hidden >Select a Quadrant</option>
                 <option value="1">Important and Urgent</option>
                 <option value="2">Important and Not Urgent</option>
                 <option value="3">Not Important and Urgent</option>
@@ -35,9 +34,9 @@
         <span asp-validation-for="Quadrant" class="text-danger"></span>
             <br />
             <br />
-        <label asp-for="CategoryId" style="font-weight:700">Category:</label>
+        <label asp-for="CategoryID" style="font-weight:700">Category:</label>
             <br />
-        <select asp-for="CategoryId">
+        <select asp-for="CategoryID">
             <option value="" selected disabled hidden>Select a Category</option>
             <option value="1">Home</option>
             <option value="2">School</option>
