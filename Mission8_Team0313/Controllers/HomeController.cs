@@ -8,11 +8,12 @@ namespace Mission8_Team0313.Controllers
     public class HomeController : Controller
     {
 
-        private TimeManagementContext _context;
 
-        public HomeController(TimeManagementContext temp)
+        private IManagementRepository _repo;
+
+        public HomeController(IManagementRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         public IActionResult Index()
