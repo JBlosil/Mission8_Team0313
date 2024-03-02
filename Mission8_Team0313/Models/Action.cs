@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mission8_Team0313.Models;
-
-public partial class Action
+namespace Mission8_Team0313.Models
 {
-    public int TaskId { get; set; }
+    public class Action
+    {
+        [Required]
+        [Key]
+        public int TaskID { get; set; }
 
-    public string Task { get; set; } = null!;
+        [Required(ErrorMessage = "Task is required.")]
+        public string Task { get; set; }
 
-    public DateOnly? DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
-    public int Quadrant { get; set; }
+        [Required(ErrorMessage = "Quadrant is required.")]
+        public int Quadrant { get; set; }
 
-    public int Completed { get; set; }
+		[ForeignKey("CategoryId")]
+		public int? CategoryId { get; set; }
+		public Category? Category { get; set; }
 
-    public int CategoryId { get; set; }
-
-    public virtual Category Category { get; set; } = null!;
+		public int? Completed { get; set; }
+    }
 }
