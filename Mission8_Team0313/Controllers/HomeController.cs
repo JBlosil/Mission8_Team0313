@@ -24,7 +24,7 @@ namespace Mission8_Team0313.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var recordDelete = _context.Actions
+            var recordDelete = _repo.Actions
             .Single(x => x.TaskID == id);
 
             return View(recordDelete);
@@ -33,15 +33,15 @@ namespace Mission8_Team0313.Controllers
         [HttpPost]
         public IActionResult Delete(Models.Action tasktodelete)
         {
-            _context.Actions.Remove(tasktodelete);
-            _context.SaveChanges();
+            _repo.DeleteAction(tasktodelete.TaskID);
+            _repo.SaveChanges();
 
             return RedirectToAction("Quadrants");
         }
 
         public IActionResult Quadrants()
         {
-            var tasks = _context.Actions.Include("Category")
+            var tasks = _repo.Actions.Include("Category")
                  .OrderBy(x => x.TaskID).ToList();
 
             return View(tasks);
@@ -50,7 +50,7 @@ namespace Mission8_Team0313.Controllers
         [HttpGet]
         public IActionResult AddEdit()
         {
-            ViewBag.Categories = _context.Categories
+            ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName).ToList();
 
             return View(new Models.Action());
@@ -61,15 +61,15 @@ namespace Mission8_Team0313.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Categories = _context.Categories
+                ViewBag.Categories = _repo.Categories
                 .OrderBy(c => c.CategoryName).ToList();
                 // Model validation failed, return to the view with the current model to show validation messages
                 return View(response);
             }
             else
             {
-                _context.Actions.Add(response); //Add record to database
-                _context.SaveChanges();
+                _repo.AddAction(response); //Add record to database
+                _repo.SaveChanges();
                 return RedirectToAction("Quadrants");
             }
         }
@@ -77,10 +77,10 @@ namespace Mission8_Team0313.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recordEdit = _context.Actions
+            var recordEdit = _repo.Actions
                 .Single(x => x.TaskID == id);
 
-            ViewBag.Categories = _context.Categories
+            ViewBag.Categories = _repo.Categories
             .OrderBy(x => x.CategoryName).ToList();
 
             return View("AddEdit", recordEdit);
@@ -89,8 +89,8 @@ namespace Mission8_Team0313.Controllers
         [HttpPost]
         public IActionResult Edit(Models.Action updatedInfo)
         {
-            _context.Update(updatedInfo);
-            _context.SaveChanges();
+            _repo.UpdateAction(updatedInfo);
+            _repo.SaveChanges();
 
             return RedirectToAction("Quadrants");
         }
