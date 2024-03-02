@@ -38,11 +38,11 @@
         <label asp-for="CategoryId" style="font-weight:700">Category:</label>
             <br />
         <select asp-for="CategoryId">
-            <option value="">Select a Category</option>
-            @foreach (Category c in ViewBag.Categories)
-            {
-                <option value="@c.CategoryId">@c.CategoryName</option>
-            }
+            <option value="" selected disabled hidden>Select a Category</option>
+            <option value="1">Home</option>
+            <option value="2">School</option>
+            <option value="3">Work</option>
+            <option value="4">Church</option>
         </select>
             <br />
             <br />
